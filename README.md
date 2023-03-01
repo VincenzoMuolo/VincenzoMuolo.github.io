@@ -1,3 +1,3 @@
 # Personal portfolio page
 
-[Direct link](https://vincenzomuolo.github.io/src/index)
+You can access my portfolio [here](https://vincenzomuolo.github.io/src/index)
