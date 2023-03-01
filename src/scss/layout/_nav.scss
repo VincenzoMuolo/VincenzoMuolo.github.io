@@ -1,0 +1,59 @@
+.nav {
+   height: fit-content;
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: flex;
+   z-index: 999;
+   transition: 300ms margin ease-in-out, 300ms padding ease-in-out;
+   justify-content: flex-end;
+
+   &--horizontal {
+      background-color: var(--secondary);
+      width: 100%;
+      flex-direction: row;
+      margin-top: 0;
+      font-size: 1rem;
+      padding-right: calc(1em + 5vw);
+   }
+   &--vertical {
+      width: fit-content;
+
+      margin-top: 2vh;
+      padding-right: 0;
+      font-size: 0.9rem;
+      position: fixed;
+      flex-direction: column;
+      background-color: var(--primary);
+      border-bottom: 0.15em solid var(--secondary);
+      border-top: 0.15em solid var(--secondary);
+      border-left: 0.15em solid var(--secondary);
+      box-shadow: 0.25em 0.35em 0 var(--black);
+   }
+
+   &__item {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & > a {
+         width: 100%;
+         position: relative;
+         text-align: center;
+         text-decoration: none;
+         cursor: pointer;
+         color: var(--primary);
+         padding: 1.5em;
+         transition: 300ms background-color ease-in-out, 300ms color ease-in-out;
+      }
+      & > .to-left {
+         text-align: end !important;
+         color: var(--secondary);
+      }
+      & > a:hover {
+         background-color: var(--accent);
+         color: var(--primary);
+      }
+   }
+}

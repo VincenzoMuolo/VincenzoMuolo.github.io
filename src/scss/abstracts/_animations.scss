@@ -1,0 +1,98 @@
+.hidden {
+   opacity: 0;
+   transform: translateX(-100%);
+   filter: blur(2em);
+   transition: 800ms opacity ease-in-out 200ms, 800ms transform ease-in-out 200ms;
+}
+
+.show {
+   opacity: 1;
+   filter: blur(0);
+   transform: translateX(0);
+}
+
+.idle {
+   animation-name: idle_anim;
+   animation-duration: 3s;
+   animation-timing-function: ease-in-out;
+   animation-iteration-count: infinite;
+   animation-fill-mode: both;
+}
+
+.textbox_anim {
+   animation-name: show_box;
+   animation-duration: 400ms;
+   animation-timing-function: ease-in-out;
+   animation-fill-mode: forwards;
+}
+
+.text_anim {
+   animation-name: show_text;
+   animation-duration: 800ms;
+   animation-timing-function: ease-out;
+   animation-fill-mode: forwards;
+   animation-delay: 400ms;
+}
+
+.scroll_anim {
+   animation-name: show_scroll;
+   animation-duration: 300ms;
+   animation-timing-function: ease-in-out;
+   animation-fill-mode: forwards;
+   animation-delay: 1s;
+}
+
+/* KEYFRAMES */
+
+@keyframes show_box {
+   to {
+      transform: scaleY(100%);
+   }
+}
+@keyframes show_text {
+   to {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}
+@keyframes show_scroll {
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+@keyframes idle_anim {
+   5% {
+      transform: translateY(0.25em);
+   }
+   10% {
+      transform: translateY(0);
+   }
+   15% {
+      transform: translateY(0.25em);
+   }
+   20% {
+      transform: translateY(-0.05em);
+   }
+   30% {
+      transform: translateY(0.05em);
+   }
+   40% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(0);
+   }
+   60% {
+      transform: translateY(0);
+   }
+   70% {
+      transform: translateY(0);
+   }
+   80% {
+      transform: translateY(0);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}

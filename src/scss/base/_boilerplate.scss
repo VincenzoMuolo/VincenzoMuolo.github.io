@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+body {
+   font-family: var(--roboto);
+   height: 100svh;
+   background-color: var(--primary);
+   font-size: 1em;
+}

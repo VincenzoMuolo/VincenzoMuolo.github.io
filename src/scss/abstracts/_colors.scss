@@ -1,0 +1,15 @@
+:root {
+   /* Base color */
+   --white: hsl(0, 0%, 98%);
+   --black: hsl(0, 0%, 10%);
+   /* Website color palette */
+   --primary: hsl(0, 2%, 90%);
+   --primary_light: hsl(214, 18%, 35%);
+   --secondary: hsl(214, 18%, 25%);
+   --accent: hsl(318, 49%, 50%);
+   /* Shadow */
+   --shadow: transparent;
+   /* Font styles */
+   --ubuntu: "Ubuntu", sans-serif;
+   --roboto: "Roboto Mono", monospace;
+}
