@@ -1,17 +1,18 @@
 @use "../abstracts/" as *;
 
 .header {
-   height: 100vh;
+   height: 95svh;
    width: 100%;
+   margin-top: 5vh;
    display: grid;
    place-content: center;
-   grid-template-rows: 50% 35% 15%;
+   grid-template-rows: 45% 40% 15%;
 
    &__title {
       place-self: center;
       height: fit-content;
       width: 16ch;
-      font-size: clamp(2.5rem, calc(1.5rem + 2vw), 5rem);
+      font-size: clamp(2rem, calc(1.5rem + 2vw), 5rem);
       letter-spacing: 0.2ch;
       color: var(--secondary);
       text-align: center;
@@ -20,18 +21,25 @@
 
    &__textbox {
       place-self: start;
-      width: auto;
+      width: 80%;
       margin-inline: auto;
-      padding-inline: 1em;
-      padding-block: 2em;
-      border-left: 0.5em solid var(--secondary);
-      border-right: 0.5em solid var(--secondary);
+      padding-inline: 0.5em;
+      padding-block: 1.5em;
+      border-left: 0.25em solid var(--secondary);
+      border-right: 0.25em solid var(--secondary);
       transform: scaleY(0);
       overflow-x: hidden;
+      @include breakpoint("medium") {
+         width: 100%;
+         padding-inline: 1em;
+         padding-block: 2em;
+         border-left: 0.5em solid var(--secondary);
+         border-right: 0.5em solid var(--secondary);
+      }
    }
 
    &__text {
-      font-size: clamp(0.7rem, calc(0.5rem + 0.5vw), 1.25rem);
+      font-size: clamp(0.75rem, calc(0.75rem + 0.5vw), 1.25rem);
       color: var(--secondary);
       text-shadow: 0.1em 0.1em var(--shadow);
       transform: translateX(-100%);
@@ -39,22 +47,29 @@
    }
 
    &__scroll {
-      background-color: transparent;
       cursor: pointer;
       text-decoration: none;
       text-transform: uppercase;
       place-self: center;
       color: var(--secondary);
+      font-size: 0.8em;
       padding: 1em;
       transform: translateY(100%);
       opacity: 0;
       transition: 250ms background-color ease-in-out, 250ms color ease-in-out;
+      @include breakpoint("medium") {
+         font-size: 1em;
+      }
       & > svg {
-         width: 1.5em;
-         height: 1em;
+         width: 1em;
+         height: 0.8em;
          padding-top: 0.25em;
          margin-inline: auto;
          fill: var(--secondary);
+         @include breakpoint("medium") {
+            width: 1.5em;
+            height: 1em;
+         }
       }
    }
    &__scroll:hover {
@@ -63,84 +78,5 @@
    }
    &__scroll:is(:hover) > svg {
       fill: var(--primary);
-   }
-}
-
-main {
-   width: 100%;
-   background-color: var(--primary);
-   display: flex;
-   flex-direction: column;
-   .card {
-      width: 100%;
-      height: 100svh;
-      display: grid;
-      place-content: center;
-      grid-template-columns: 10% 50% 30% 10%;
-      overflow: hidden;
-      border-radius: 0.1em;
-      background-color: var(--primary_light);
-
-      @media (min-width: 120em) {
-         padding-inline: 10vw;
-      }
-
-      &__images {
-         position: relative;
-         display: grid;
-         grid-column: 2/3;
-         height: min(25vw, 25em);
-         grid-template-columns: 20% 80%;
-         grid-template-rows: repeat(3, 1fr);
-         column-gap: 1em;
-         row-gap: 0.5em;
-         overflow: hidden;
-         & > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            position: relative;
-            cursor: pointer;
-         }
-         & > img.active {
-            grid-row: 1/4;
-            grid-column: 2/3;
-            cursor: default;
-         }
-      }
-
-      &__text {
-         color: var(--primary);
-         padding: 2em;
-         padding-top: 0;
-         grid-column: 3/4;
-         & > h2 {
-            font-weight: 600;
-            text-transform: uppercase;
-         }
-      }
-   }
-   .presentation {
-      height: min(25vw, 25em);
-      width: 100%;
-      grid-column: 2/3;
-      display: grid;
-      grid-template-columns: 30% 70%;
-      column-gap: 0.5em;
-
-      &__image {
-         width: 100%;
-         object-fit: cover;
-         object-position: 50% 50%;
-
-         &--desktop {
-            height: 100%;
-         }
-      }
-      & > .show-mobile {
-         width: 100%;
-         overflow-y: scroll;
-      }
    }
 }

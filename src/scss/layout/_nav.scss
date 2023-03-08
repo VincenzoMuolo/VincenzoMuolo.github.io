@@ -1,3 +1,4 @@
+@use "../abstracts/" as *;
 .nav {
    height: fit-content;
    position: absolute;
@@ -11,17 +12,20 @@
    &--horizontal {
       background-color: var(--secondary);
       width: 100%;
+      display: flex;
       flex-direction: row;
       margin-top: 0;
-      font-size: 1rem;
-      padding-right: calc(1em + 5vw);
+      font-size: clamp(0.65rem, calc(0.5rem + 0.5vw), 1rem);
+      @include breakpoint("medium") {
+         font-size: clamp(0.7rem, calc(0.5rem + 0.5vw), 1rem);
+         padding-right: calc(1em + 5vw);
+      }
    }
    &--vertical {
       width: fit-content;
-
       margin-top: 2vh;
       padding-right: 0;
-      font-size: 0.9rem;
+      font-size: clamp(0.7rem, calc(0.5rem + 0.5vw), 0.9rem);
       position: fixed;
       flex-direction: column;
       background-color: var(--primary);
@@ -30,6 +34,41 @@
       border-left: 0.15em solid var(--secondary);
       box-shadow: 0.25em 0.35em 0 var(--black);
    }
+   &--mobile {
+      height: fit-content;
+      position: fixed;
+      box-sizing: content-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      & > .nav__item:nth-child(4) {
+         order: 1;
+      }
+      & > .nav__item:nth-child(1) {
+         order: 2;
+      }
+      & > .nav__item:nth-child(2) {
+         order: 2;
+      }
+      & > .nav__item:nth-child(3) {
+         order: 2;
+      }
+      & > .nav__item a {
+         visibility: visible;
+         transform: translateX(100%);
+         font-size: clamp(0.7rem, calc(0.7rem + 0.5vw), 1rem);
+         background-color: var(--black);
+         color: var(--primary);
+         transition: 200ms transform ease-in-out, 300ms background-color ease-in-out, 200ms visibility ease-in-out;
+      }
+      & > .nav__item svg {
+         width: 2.5em;
+         height: 2.5em;
+         padding: 0.5em;
+         background-color: var(--black);
+         box-sizing: content-box;
+      }
+   }
 
    &__item {
       padding: 0;
@@ -37,15 +76,47 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       & > a {
          width: 100%;
+         display: flex;
          position: relative;
+         z-index: 1;
          text-align: center;
          text-decoration: none;
          cursor: pointer;
          color: var(--primary);
+         visibility: hidden;
          padding: 1.5em;
-         transition: 300ms background-color ease-in-out, 300ms color ease-in-out;
+         transform: translateX(15em);
+         transition: 300ms background-color ease-in-out, 300ms color ease-in-out, 200ms visibility ease-in-out, 400ms transform ease-in-out;
+         @include breakpoint("medium") {
+            visibility: visible;
+            transform: translateX(0);
+         }
+      }
+      &:has(:hover) svg {
+         fill: var(--accent);
+         cursor: pointer;
+      }
+      & > svg {
+         width: 100%;
+         height: 100%;
+         display: block;
+         position: relative;
+         z-index: 999;
+         padding-inline: 1em;
+         background-color: var(--secondary);
+         transition: 300ms background-color ease-in-out;
+         &:hover {
+            background-color: var(--accent);
+         }
+         @include breakpoint("medium") {
+            display: none;
+         }
+         &.hide_icon {
+            display: none;
+         }
       }
       & > .to-left {
          text-align: end !important;

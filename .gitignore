@@ -1,0 +1,6 @@
+node_modules/
+.prettierrc/
+gulpfile.js/
+package.json/
+package-look.json/
+waste.html/

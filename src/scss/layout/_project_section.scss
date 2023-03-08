@@ -1,123 +1,127 @@
-.projects-section-title {
-   width: fit-content;
-   padding-block: 1em;
-   margin-inline: auto;
-   font-size: clamp(1.5rem, calc(2rem + 2vw), 3rem);
-   color: var(--secondary);
+@use "../abstracts/" as *;
+
+.projects_detail {
+   width: 100%;
+   height: fit-content;
+   background-color: var(--secondary_light);
+   padding-block: calc(1.5em + 5vw);
+   display: flex;
+   flex-direction: column;
 }
-.projects-container {
+.projects_title {
+   width: fit-content;
+   margin-inline: auto;
+   font-size: clamp(1.25rem, calc(1.25rem + 2vw), 3rem);
+   color: var(--primary);
+}
+.projects_descr {
+   width: 85%;
+   padding-top: 1em;
+   margin-inline: auto;
+   font-size: clamp(0.75rem, calc(0.75rem + 0.5vw), 1.25rem);
+   color: var(--primary);
+   @include breakpoint("small") {
+      width: 75%;
+   }
+   @include breakpoint("large") {
+      width: 65ch;
+   }
+}
+.projects_container {
    display: grid;
    width: 90%;
+   min-height: 90svh;
+   margin-inline: auto;
    position: relative;
    place-content: center;
-   grid-template-columns: repeat(auto-fill, 25em);
-   grid-gap: 5em;
-   margin-inline: auto;
+   grid-template-columns: repeat(auto-fill, 20em);
+   grid-gap: calc(2em + 2vw);
+   margin-block: 5em 10em;
+   @include breakpoint("medium") {
+      grid-template-columns: repeat(auto-fill, 30em);
+   }
 }
 .project {
-   width: 25em;
-   height: 20em;
-   display: flex;
+   width: 100%;
+   height: fit-content;
    position: relative;
-   overflow: hidden;
-   box-shadow: 0.25em 0.25em 1em hsla(0, 0%, 50%, 0.5);
+   display: flex;
+   flex-direction: column;
+   box-shadow: 0.5em 0.5em 1em hsla(0, 0%, 50%, 0.5);
+   transition: 200ms box-shadow ease-in-out, 500ms transform ease-in-out, 500ms opacity ease-in-out;
+   &:hover {
+      box-shadow: 0.25em 1em 1em hsla(0, 0%, 50%, 0.5);
+   }
 
    &__image {
       width: 100%;
-      height: auto;
+      height: 12.5em;
       object-fit: cover;
-      object-position: 50% 90%;
-      transform: scale(130%);
-      filter: saturate(0.75);
+      object-position: 50% 50%;
+      filter: grayscale(0.1);
+      @include breakpoint("medium") {
+         height: 17.5em;
+      }
+   }
+   &__card {
+      width: 100%;
+      display: flex;
+      padding: 0.75em;
+      flex-direction: row;
+      background-color: var(--white);
+      gap: 2em;
    }
    &__detail {
-      position: absolute;
-      width: fit-content;
-      height: 2em;
-      top: 0;
-      left: 0;
+      width: 80%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: flex-start;
-      background-color: var(--secondary);
-      color: var(--primary);
-      padding: 0.25em;
-      overflow: hidden;
-      transition: 200ms height ease-in-out;
-      &:hover {
-         height: fit-content;
+      flex-direction: column;
+      text-transform: uppercase;
+      color: var(--black);
+      p {
+         font-size: 1.25em;
+         font-weight: 800;
       }
-      & > div {
-         width: fit-content;
-         z-index: 999;
+      div {
+         height: 100%;
          display: grid;
-         background-color: var(--secondary);
-         grid-template-rows: repeat(4, 1fr);
-         & > p:not(:first-child) {
-            padding-left: 1ch;
+         grid-template-columns: repeat(auto-fill, 5ch);
+         grid-template-rows: repeat(2, 1fr);
+         grid-auto-flow: column dense;
+         & > :first-child {
+            grid-column-start: 1;
+            grid-row-start: 1;
+         }
+
+         p {
+            font-size: 1rem;
+            font-weight: 600;
          }
       }
    }
-   &__demo {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
+   &__buttons {
+      grid-column-start: 4;
+      width: fit-content;
+      background-color: transparent;
       display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      color: var(--primary);
-      gap: 0.5em;
-      padding: 0.5em;
-      &::before {
-         content: "";
-         width: 100%;
-         height: 100%;
-         left: 0;
-         bottom: 0;
-         position: absolute;
-         background-color: var(--secondary);
-         z-index: 1;
-         filter: opacity(0.8);
-      }
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25em;
       button {
          width: fit-content;
-         height: fit-content;
-         position: relative;
-         z-index: 999;
-         padding: 0.5em;
-         background-color: var(--primary);
-         color: var(--secondary);
          border: none;
-         transition: 200ms background-color ease-in-out, 200ms color ease-in-out;
+         white-space: nowrap;
+         font-size: 1rem;
+         background-color: var(--black);
+         color: var(--primary);
+         padding: 0.5em 0.75em;
+         transition: 300ms background-color ease-in-out;
          cursor: pointer;
          &:hover {
             background-color: var(--accent);
             color: var(--primary);
          }
-      }
-   }
-   &__popup {
-      display: none;
-      position: absolute;
-      & > img {
-         width: 2.25rem;
-         height: 2.25rem;
-         cursor: pointer;
-         box-sizing: content-box;
-         padding: 1em;
-         background-color: var(--primary);
-         grid-row-start: 2;
-         &:hover {
-            background-color: var(--accent);
-         }
-      }
-      & > span {
-         font-weight: 300;
-         color: var(--primary);
-         grid-row-start: 3;
-         justify-self: center;
-         align-self: flex-start;
-         cursor: pointer;
       }
    }
 }

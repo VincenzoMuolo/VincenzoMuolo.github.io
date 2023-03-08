@@ -19,79 +19,212 @@
    <body>
       <nav id="nav" class="nav nav--horizontal">
          <ul class="nav__item">
-            <a data-nav="link" href="#header">ABOUT</a>
+            <a data-nav="link" href="#">ABOUT</a>
          </ul>
          <ul class="nav__item">
             <a data-nav="link" href="#projects">MY PROJECTS</a>
          </ul>
          <ul class="nav__item">
-            <a data-nav="link" href="#links">LINKS</a>
+            <a data-nav="link" href="#footer">LINKS</a>
+         </ul>
+         <ul class="nav__item">
+            <svg id="icon_m" width="50" height="8" viewBox="0 0 100 60" fill="" onclick="show_menu('open')" xmlns="http://www.w3.org/2000/svg">
+               <rect x="25" y="10" width="50" height="8" fill="white" />
+               <rect x="25" y="25" width="50" height="8" fill="white" />
+               <rect x="25" y="40" width="50" height="8" fill="white" />
+            </svg>
+            <svg id="icon_c" class="hide_icon" width="50" height="8" viewBox="0 0 100 60" fill="" onclick="show_menu('close')" xmlns="http://www.w3.org/2000/svg">
+               <rect x="35.1336" y="8" width="50" height="10" transform="rotate(45 35.1336 8)" fill="white" />
+               <rect x="28" y="43.9723" width="50" height="10" transform="rotate(-45 28 43.9723)" fill="white" />
+               <rect x="47" y="27" width="5" height="5" fill="white" />
+            </svg>
          </ul>
       </nav>
-      <main>
-         <div id="header" class="header">
-            <h1 id="header_title" class="header__title">Hello There! I'm Vincenzo</h1>
-            <div id="header_textbox" class="header__textbox">
-               <p id="header_text" class="header__text">
-                  I'm an university student and web developer.
-                  <br />I've learned the fundamentals of web development during my studies. <br />I am now expanding my skills through self-taught learning.
-               </p>
-            </div>
-            <a id="header_scroll" class="header__scroll" href="#more_about">
-               Continue explore
-               <svg class="idle" width="130" height="75" viewBox="0 0 130 75" fill="white" xmlns="http://www.w3.org/2000/svg">
-                  <path class="scroll-icon" d="M65 75L0.0480957 0L129.952 0L65 75Z" />
-               </svg>
-            </a>
+      <main class="header">
+         <h1 id="header_title" class="header__title">Hello There! I'm Vincenzo</h1>
+         <div id="header_textbox" class="header__textbox">
+            <p id="header_text" class="header__text">
+               I'm an university student and web developer.
+               <br />I've learned the fundamentals of web development during my studies. <br />I am now expanding my skills through self-taught learning.
+            </p>
          </div>
-         <section id="more_about" class="card">
-            <section class="card__images">
-               <img data-img="ch2" class="image hidden active" src="assets/challenge2.png" aria-hidden="true" onclick="change_image(this)" />
-               <img data-img="ch7" class="image hidden" src="assets/challenge7.png" aria-hidden="true" onclick="change_image(this)" />
-               <img data-img="ch5" class="hidden" src="assets/challenge5.png" aria-hidden="true" onclick="change_image(this)" />
-               <img data-img="ch3" class="hidden" src="assets/challenge3.png" aria-hidden="true" onclick="change_image(this)" />
-            </section>
-            <section class="card__text hidden">
-               <h2>learn through practice</h2>
-               <p>I'm constantly improving my skills by completing coding challenges. These provide me with valuable insights into how modern designs are created.</p>
-            </section>
-         </section>
-         <section class="card card--alternate">
-            <section class="presentation hidden">
-               <div class="show-mobile"><img data-img="pr-image" class="presentation__image" src="assets/mobilechallenge8.png" aria-hidden="true" /></div>
-               <img data-img="pr-image" class="presentation__image presentation__image--desktop" src="assets/challenge8.png" aria-hidden="true" />
-            </section>
-
-            <section class="card__text card__text--alternate hidden">
-               <h2>Mobile first</h2>
-               <p>
-                  I prioritize mobile layout optimization by defining the organization of elements for smaller screens first, and then adapting them for larger layouts.
-                  <br />This approach saves time and effort, as it is easier to adapt for larger screens than the other way around.
-               </p>
-            </section>
-         </section>
+         <a id="header_scroll" class="header__scroll" href="#projects">
+            Continue explore
+            <svg class="idle" width="130" height="75" viewBox="0 0 130 75" fill="white" xmlns="http://www.w3.org/2000/svg">
+               <path class="scroll-icon" d="M65 75L0.0480957 0L129.952 0L65 75Z" />
+            </svg>
+         </a>
       </main>
-      <h2 id="projects" class="projects-section-title">PROJECTS</h2>
-      <section class="projects-container">
-         <section class="project hidden">
-            <img class="project__image" src="assets/challenge1.png" />
-            <section class="project__demo">
-               <button data-pr="pr1" onclick="show_option(this)">LIVE DEMO</button>
-               <button data-pr="pr1" onclick="go_to(this)">SOURCE CODE</button>
-               <div class="project__popup">
-                  <img data-device="desktop" src="assets/icons/desktop.svg" />
-                  <span data-device="desktop">Desktop</span>
-                  <img data-device="tablet" src="assets/icons/tablet.svg" />
-                  <span data-device="tablet">Tablet</span>
-                  <img data-device="mobile" src="assets/icons/mobile.svg" />
-                  <span data-device="mobile">Mobile</span>
+      <section id="projects" class="projects_detail">
+         <h2 class="projects_title hidden">PROJECTS</h2>
+         <section class="projects_descr hidden">
+            <p>Those projects are based on coding challenges, which provide me with valuable insights into how modern designs are created.</p>
+            <p>Also every project is responsive.</p>
+         </section>
+      </section>
+      <section id="prj_container" class="projects_container">
+         <!-- project-8 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge8.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>one card layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr1" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr1" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-7 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge7.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-6 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge6.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-5 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge5.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-4 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge4.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-3 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge3.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>one card layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-2 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge2.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                     <p>js</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr2" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr2" onclick="go_to(this)">SOURCE CODE</button>
+               </div>
+            </section>
+         </section>
+         <!-- project-1 -->
+         <section class="project hidden-project">
+            <img class="project__image" src="assets/challenge1.png" alt="" />
+            <section class="project__card">
+               <div class="project__detail">
+                  <p>single page layout</p>
+                  <div>
+                     <p>html</p>
+                     <p>css</p>
+                     <p>scss</p>
+                  </div>
+               </div>
+               <div class="project__buttons">
+                  <button data-pr="pr1" onclick="live_demo(this)">LIVE DEMO</button>
+                  <button data-pr="pr1" onclick="go_to(this)">SOURCE CODE</button>
                </div>
             </section>
          </section>
       </section>
-      <footer id="links">
-         <p>Challenges provided by <a href="https://www.frontendmentor.io/home">Frontend Mentor</a></p>
-         <p>My links</p>
+      <footer id="footer" class="footer">
+         <section class="footer__links">
+            <h3>My links</h3>
+            <a href="https://github.com/VincenzoMuolo" target="_blank">Github</a>
+            <a href="https://www.frontendmentor.io/profile/Shirohige-96" target="_blank">Fronted Mentor</a>
+            <!-- <a href="#" target="_blank">LinkedIn</a> -->
+         </section>
+         <section class="footer__info">
+            <h3>Challenges provided by</h3>
+            <a href="https://www.frontendmentor.io/home">Frontend Mentor</a>
+         </section>
       </footer>
    </body>
 </html>

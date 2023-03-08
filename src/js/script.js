@@ -1,81 +1,32 @@
-function loadChallenge(challenge) {
-   switch (challenge.id) {
-      case "newbie-challenge-1":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/interactive-rating-component-main/html/index.html";
-         }, 350);
-         break;
-      case "newbie-challenge-2":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/product-preview-card-component-main/html/index.html";
-         }, 350);
-         break;
-      case "newbie-challenge-3":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/nft-preview-card-component-main/html/index.html";
-         }, 350);
-         break;
-      case "newbie-challenge-4":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/stats-preview-card-component-main/html/index.html";
-         }, 350);
-         break;
-      case "newbie-challenge-5":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/order-summary-component-main/html/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-6":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/four-card-feature-section-master/html/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-7":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/faq-accordion-card-main/html/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-8":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/social-proof-section-master/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-9":
-         setTimeout(function waitAnim() {
-            location.href = "./1-Newbie/3-column-preview-card-component-main/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-10":
-         setTimeout(function waitAnim() {
-            location.href = "/1-Newbie/article-preview-component-master/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-11":
-         setTimeout(function waitAnim() {
-            location.href = "/1-Newbie/base-apparel-coming-soon-master/index.html";
-         }, 450);
-         break;
-      case "newbie-challenge-12":
-         setTimeout(function waitAnim() {
-            /* /1-Newbie/single-price-grid-component-master/index.html */
-         }, 200);
-         break;
-      default:
-         break;
-   }
-}
 /****************
-Go to source code
+   Go to source code
 ****************/
 function go_to(project) {
    switch (project.getAttribute("data-pr")) {
       case "pr1": {
          window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/single-price-grid-component-master", "_blank");
       }
+      case "pr2": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/base-apparel-coming-soon-master", "_blank");
+      }
+   }
+}
+
+/*************************
+   Live demostration
+**************************/
+function live_demo(project) {
+   switch (project.getAttribute("data-pr")) {
+      case "pr1": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/single-price-grid-component-master/index.html", "_blank");
+      }
+      case "pr2": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/base-apparel-coming-soon-master/html/index.html", "_blank");
+      }
    }
 }
 /*********************
-Title typing animation
+   Title typing animation
 *********************/
 let anim_end = false;
 const separator = (id) => {
@@ -101,7 +52,7 @@ const separator = (id) => {
 separator("header_title");
 
 /************************************************
-Interval to check if the title animation is ended 
+   Interval to check if the title animation is ended 
 ************************************************/
 let wait_anim;
 if (!wait_anim) {
@@ -120,8 +71,9 @@ function check_state() {
 }
 
 /***********************************
- Show element if they become visible
+   Show element if they become visible
  **********************************/
+let delay = 0;
 const observer = new IntersectionObserver((entries) => {
    entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -133,37 +85,34 @@ const observer = new IntersectionObserver((entries) => {
 });
 const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((el) => observer.observe(el));
+const hiddenProject = document.querySelectorAll(".hidden-project");
+hiddenProject.forEach((el) => observer.observe(el));
 
-setTimeout(() => {}, 1500);
-
-/***********
-Change image
-***********/
-function change_image(selected_image) {
-   // prettier-ignore
-   const images = document.querySelectorAll("img[data-img]");
-   images.forEach((image) => {
-      if (image == selected_image) {
-         image.classList.add("active");
-      } else image.classList.remove("active");
-   });
-}
+/* setTimeout(() => {}, 1500); */
 
 /*********************
- Move navbar on scroll 
+   Move navbar on scroll 
  ********************/
 function scrollFunction(pageDepth) {
    const nav_change = document.getElementById("nav");
    const link_change = document.querySelectorAll("a[data-nav]");
 
    if (window.scrollY > pageDepth) {
-      nav_change.classList.add("nav--vertical");
       nav_change.classList.remove("nav--horizontal");
+      if (window.innerWidth >= 768) {
+         nav_change.classList.add("nav--vertical");
+      } else {
+         nav_change.classList.add("nav--mobile");
+      }
       link_change.forEach((link) => {
          link.classList.add("to-left");
       });
    } else {
-      nav_change.classList.remove("nav--vertical");
+      if (window.innerWidth >= 768) {
+         nav_change.classList.remove("nav--vertical");
+      } else {
+         nav_change.classList.remove("nav--mobile");
+      }
       nav_change.classList.add("nav--horizontal");
       link_change.forEach((link) => {
          link.classList.remove("to-left");
@@ -171,21 +120,76 @@ function scrollFunction(pageDepth) {
    }
 }
 
-window.addEventListener("scroll", () => scrollFunction(200));
+window.addEventListener("scroll", () => scrollFunction(100));
 
 /*********************
- Reduce image opacity
- ********************/
+   Reduce images opacity
+*********************/
 const images = document.querySelectorAll("img[data-img]");
 images.forEach((image) => {
    image.style = "filter: opacity(90%)";
 });
 
+/*********************
+   nav menù open
+*********************/
+function show_menu(operation) {
+   let delay = 0;
+   const menu_icon = document.getElementById("icon_m");
+   const cross_icon = document.getElementById("icon_c");
+   const links = document.querySelectorAll("a[data-nav]");
+   const nav = document.getElementById("nav");
+
+   if (operation === "open") {
+      console.log("SIUUUU");
+      menu_icon.classList.add("hide_icon");
+      cross_icon.classList.remove("hide_icon");
+      if (nav.classList.contains("nav--horizontal")) {
+         links.forEach((link) => {
+            setTimeout(() => {
+               link.style.visibility = "visible";
+               link.style.transform = "translateX(0)";
+            }, (delay += 75));
+         });
+      } else if (nav.classList.contains("nav--mobile")) {
+         links.forEach((link) => {
+            setTimeout(() => {
+               link.style.visibility = "visible";
+               link.style.transform = "translateX(0)";
+            }, (delay += 75));
+         });
+      }
+   } else if (operation === "close") {
+      console.log("NIUUU");
+      menu_icon.classList.remove("hide_icon");
+      cross_icon.classList.add("hide_icon");
+      if (nav.classList.contains("nav--horizontal")) {
+         links.forEach((link) => {
+            setTimeout(() => {
+               link.style.visibility = "hidden";
+               link.style.transform = "translateX(15em)";
+            }, (delay += 75));
+         });
+      } else if (nav.classList.contains("nav--mobile")) {
+         links.forEach((link) => {
+            setTimeout(() => {
+               link.style.visibility = "hidden";
+               link.style.transform = "translateX(100%)";
+            }, (delay += 75));
+         });
+      }
+   }
+}
+
 /*****************************
-Open challenge in frame
+   Auto close menu after input
 *****************************/
-const icons = document.querySelectorAll("img[data-device]");
-const icons_span = document.querySelectorAll("span[data-device]");
-icons.forEach((icon) => {
-   /* TODO */
-});
+
+const links = document.querySelectorAll("a[data-nav]");
+if (window.innerWidth < 768) {
+   links.forEach((link) => {
+      link.addEventListener("click", function () {
+         show_menu("close");
+      });
+   });
+}

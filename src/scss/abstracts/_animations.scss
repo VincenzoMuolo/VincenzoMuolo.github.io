@@ -4,11 +4,16 @@
    filter: blur(2em);
    transition: 800ms opacity ease-in-out 200ms, 800ms transform ease-in-out 200ms;
 }
-
+.hidden-project {
+   opacity: 0;
+   transform: translateY(100%);
+   filter: blur(2em);
+   transition: 800ms opacity ease-in-out 200ms, 800ms transform ease-in-out 200ms;
+}
 .show {
    opacity: 1;
    filter: blur(0);
-   transform: translateX(0);
+   transform: translateX(0) translateY(0);
 }
 
 .idle {
