@@ -10,7 +10,7 @@
    font-size: 0.8em;
    position: relative;
    z-index: 999;
-   gap: 1em;
+   gap: 1rem;
 
    @include breakpoint("small") {
       flex-direction: row;
@@ -20,11 +20,8 @@
       justify-content: space-evenly;
    }
    @include breakpoint("medium") {
-      font-size: 1em;
+      font-size: 1rem;
       padding-block: 10vh;
-   }
-   @include breakpoint("medium") {
-      font-size: 1.25em;
    }
    &__info {
       height: 100%;

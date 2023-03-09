@@ -7,13 +7,31 @@ function go_to(project) {
          window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/single-price-grid-component-master", "_blank");
       }
       case "pr2": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/four-card-feature-section-master", "_blank");
+      }
+      case "pr3": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/3-column-preview-card-component-main", "_blank");
+      }
+      case "pr4": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/stats-preview-card-component-main", "_blank");
+      }
+      case "pr5": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/article-preview-component-master", "_blank");
+      }
+      case "pr6": {
          window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/base-apparel-coming-soon-master", "_blank");
+      }
+      case "pr7": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/faq-accordion-card-main", "_blank");
+      }
+      case "pr8": {
+         window.open("https://github.com/VincenzoMuolo/Frontend-Mentor-Challenges/tree/main/1-Newbie/social-proof-section-master", "_blank");
       }
    }
 }
 
 /*************************
-   Live demostration
+   Live demonstration
 **************************/
 function live_demo(project) {
    switch (project.getAttribute("data-pr")) {
@@ -21,7 +39,25 @@ function live_demo(project) {
          window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/single-price-grid-component-master/index.html", "_blank");
       }
       case "pr2": {
-         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/base-apparel-coming-soon-master/html/index.html", "_blank");
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/four-card-feature-section-master/html/index.html", "_blank");
+      }
+      case "pr3": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/3-column-preview-card-component-main/index.html", "_blank");
+      }
+      case "pr4": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/stats-preview-card-component-main/html/index.html", "_blank");
+      }
+      case "pr5": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/article-preview-component-master/index.html", "_blank");
+      }
+      case "pr6": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/base-apparel-coming-soon-master/index.html", "_blank");
+      }
+      case "pr7": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/faq-accordion-card-main/html/index.html", "_blank");
+      }
+      case "pr8": {
+         window.open("https://vincenzomuolo.github.io/Frontend-Mentor-Challenges/1-Newbie/social-proof-section-master/index.html", "_blank");
       }
    }
 }
@@ -100,8 +136,10 @@ function scrollFunction(pageDepth) {
    if (window.scrollY > pageDepth) {
       nav_change.classList.remove("nav--horizontal");
       if (window.innerWidth >= 768) {
+         nav_change.classList.remove("nav--mobile");
          nav_change.classList.add("nav--vertical");
       } else {
+         nav_change.classList.remove("nav--vertical");
          nav_change.classList.add("nav--mobile");
       }
       link_change.forEach((link) => {
@@ -113,10 +151,10 @@ function scrollFunction(pageDepth) {
       } else {
          nav_change.classList.remove("nav--mobile");
       }
-      nav_change.classList.add("nav--horizontal");
       link_change.forEach((link) => {
          link.classList.remove("to-left");
       });
+      nav_change.classList.add("nav--horizontal");
    }
 }
 
@@ -127,7 +165,7 @@ window.addEventListener("scroll", () => scrollFunction(100));
 *********************/
 const images = document.querySelectorAll("img[data-img]");
 images.forEach((image) => {
-   image.style = "filter: opacity(90%)";
+   image.style = "filter: opacity(80%)";
 });
 
 /*********************
@@ -141,7 +179,6 @@ function show_menu(operation) {
    const nav = document.getElementById("nav");
 
    if (operation === "open") {
-      console.log("SIUUUU");
       menu_icon.classList.add("hide_icon");
       cross_icon.classList.remove("hide_icon");
       if (nav.classList.contains("nav--horizontal")) {
@@ -160,7 +197,6 @@ function show_menu(operation) {
          });
       }
    } else if (operation === "close") {
-      console.log("NIUUU");
       menu_icon.classList.remove("hide_icon");
       cross_icon.classList.add("hide_icon");
       if (nav.classList.contains("nav--horizontal")) {
