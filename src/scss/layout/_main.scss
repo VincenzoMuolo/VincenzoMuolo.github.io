@@ -30,7 +30,7 @@
       transform: scaleY(0);
       overflow-x: hidden;
       @include breakpoint("medium") {
-         width: 100%;
+         width: 65%;
          padding-inline: 1em;
          padding-block: 2em;
          border-left: 0.5em solid var(--secondary);
